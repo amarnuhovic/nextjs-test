@@ -1,11 +1,8 @@
-// 'use server';
-
 export const fetchHome = async () => {
   try {
-    console.log('Fetching home page data...');
     const res = await fetch(
       'https://striking-acoustics-2a02bc5746.strapiapp.com/api/home-page',
-      { cache: 'no-store' }
+      { next: { revalidate: 10 } }
     );
 
     if (!res.ok) {
